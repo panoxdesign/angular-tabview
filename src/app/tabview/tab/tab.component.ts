@@ -17,7 +17,7 @@ export class TabComponent implements OnInit {
   @ContentChild('content')
   lazyContent: TemplateRef<any>;
 
-  _active = false;
+  private _active = false;
   loaded = false;
 
   set active(active: boolean) {

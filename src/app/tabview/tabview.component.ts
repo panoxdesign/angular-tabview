@@ -4,6 +4,7 @@ import {
   ContentChildren,
   QueryList,
   AfterContentInit,
+  Input,
 } from '@angular/core';
 import { TabComponent } from './tab/tab.component';
 
@@ -13,6 +14,8 @@ import { TabComponent } from './tab/tab.component';
   styleUrls: ['./tabview.component.scss'],
 })
 export class TabviewComponent implements OnInit, AfterContentInit {
+  @Input() selectFirst: boolean = false;
+
   @ContentChildren(TabComponent)
   allTabs: QueryList<TabComponent>;
 
@@ -31,6 +34,8 @@ export class TabviewComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit(): void {
-    console.log(this.allTabs);
+    if (this.selectFirst) {
+      this.activate(this.allTabs.first);
+    }
   }
 }

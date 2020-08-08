@@ -1,4 +1,4 @@
-<dev-tabview>
+<dev-tabview [selectFirst]="true">
   <dev-tab header="Tab 1">
     Hello I am Tab 1
   </dev-tab>
@@ -7,7 +7,7 @@
   </dev-tab>
   <dev-tab header="Tab 3">
     <ng-template #content>
-      Hello I am Tab 3
+      Hello I am Tab 3 and I have been Lazy Loaded!
     </ng-template>
   </dev-tab>
 </dev-tabview>
