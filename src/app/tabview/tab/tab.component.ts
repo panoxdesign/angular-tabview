@@ -1,4 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  TemplateRef,
+  ContentChild,
+} from '@angular/core';
 
 @Component({
   selector: 'dev-tab',
@@ -8,8 +14,20 @@ import { Component, OnInit, Input } from '@angular/core';
 export class TabComponent implements OnInit {
   @Input() header: string;
 
-  active = false;
+  @ContentChild('content')
+  lazyContent: TemplateRef<any>;
 
+  _active = false;
+  loaded = false;
+
+  set active(active: boolean) {
+    this._active = active;
+    this.loaded = true;
+  }
+
+  get active(): boolean {
+    return this._active;
+  }
   constructor() {}
 
   ngOnInit(): void {}
