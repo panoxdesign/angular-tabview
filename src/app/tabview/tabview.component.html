@@ -1,7 +1,10 @@
 <div class="tabs">
   <ul>
     <li *ngFor="let tab of allTabs" [ngClass]="{ 'is-active': tab.active }">
-      <a (click)="activate(tab)">{{ tab.header }}</a>
+      <a (click)="activate(tab)"
+        >{{ tab.header }}
+        <ng-container *ngTemplateOutlet="tab.headerTemplate"></ng-container>
+      </a>
     </li>
   </ul>
 </div>

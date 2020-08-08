@@ -14,6 +14,9 @@ import {
 export class TabComponent implements OnInit {
   @Input() header: string;
 
+  @ContentChild('header')
+  headerTemplate: TemplateRef<any>;
+
   @ContentChild('content')
   lazyContent: TemplateRef<any>;
 
