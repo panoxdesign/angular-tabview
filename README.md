@@ -1,27 +1,32 @@
-# Tabview
+# How to create a reusable TabView Component with LazyLoading Tabs in Anguar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.12.
+When I started to learn Angular, I was wondering myself how to create reusable Components like Tables, Accordion Panel and TabViews. In this article I want to show you, how I created a TabView Component. As a beginner it was a bit hard to understand the templating system in Angular and how to create something reusable out of it. I always think to use components is good, but to know how to create your own ones is much more worth. Before we implement this component, lets look at the requirements we have in our TabView:
 
-## Development server
+1. The TabView should be reusable. That means, the content of any Tab must be defined outside of the Tab.
+2. Large content should be created lazy to save loading time.
+3. The Header should be either defined as string or as a template.
+4. The first Tab should be selected, if needed.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Setup
 
-## Code scaffolding
+I'm using Angular 9 and that the TabView looks beautiful, I use the Bulma CSS Framework. So to setup our project I used the following command.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+ng new custom-tab-component -p custom --inlineStyle=true --style=scss --routing=false
 
-## Build
+Next we install Bulma with the following command.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+npm i bulma
 
-## Running unit tests
+After it has been installed, you need to link it to styles.scss, in order to use it.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@import "./../node_modules/bulma/bulma.sass";
 
-## Running end-to-end tests
+Perfect, now we can start creating our TabView Component.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+For that, create two component via cli with the following two commands
 
-## Further help
+ng g c tabview
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+ng g c tabview/tab
+
+Let's start with the Tab Component and bring some life into it.
